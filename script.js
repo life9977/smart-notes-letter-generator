@@ -65,9 +65,7 @@ document.getElementById("generateNotes").addEventListener("click", () => {
             output += `• ${line}.\n`;
         }
     });
-
-    output += `\n🔑 Key Points:\n• Definitions\n• Examples\n• Important terms highlighted during revision`;
-
+    output +=  `\n\n- End of Notes -`;
     document.getElementById("notesOutput").value = output;
 });
 
@@ -93,6 +91,33 @@ document.querySelector("#notes-tool .output-actions").addEventListener("click", 
 
 document.getElementById("generateLetter").addEventListener("click", () => {
     const type = document.getElementById("letterType").value;
+    let reasonText = "";
+
+    if (type.includes("Leave") || type.includes("Sick")) {
+        reasonText = "Due to unavoidable personal circumstances, I am unable to fulfill my regular responsibilities during this period. This situation requires my immediate attention.";
+    }
+
+    else if (type.includes("Internship")) {
+        reasonText = "This opportunity aligns closely with my academic and professional goals and will help me gain valuable practical experience relevant to my field of study.";
+    }
+
+    else if (type.includes("Project")) {
+        reasonText = "This submission is an important part of my academic requirements, and I have put sincere effort into ensuring that the work meets the expected standards.";
+    }
+
+    else if (type.includes("Complaint")) {
+        reasonText = "The issue has been causing repeated inconvenience, and despite earlier efforts, it has not yet been resolved satisfactorily.";
+    }
+
+    else if (type.includes("Request")) {
+        reasonText = "This request is made after careful consideration, as it directly affects my responsibilities and commitments.";
+    }
+
+    else {
+        reasonText = "This matter is important and requires your kind attention and consideration.";
+    }
+
+    const format = document.getElementById("letterFormat").values;
     const tone = document.getElementById("letterTone").value;
     const length = document.getElementById("letterLength").value;
     const language = document.getElementById("letterLanguage").value;
@@ -103,32 +128,142 @@ document.getElementById("generateLetter").addEventListener("click", () => {
         return;
     }
 
-    let greeting = "Respected Sir/Madam,";
+    let greeting = "";
+
+    // FORMAT-BASED GREETINGS
+    if (format === "Strict Official") {
+        greeting = "Respected Sir/Madam,";
+    }
+
+    if (format === "Professional Corporate") {
+        greeting = "Dear Sir/Madam,";
+    }
+
+    if (format === "Student Academic") {
+        greeting = "Respected Sir/Madam,";
+    }
+
+    if (format === "Request-Focused") {
+        greeting = "Dear Sir/Madam,";
+    }
+
+    if (format === "Explanation-Focused") {
+        greeting = "Respected Sir/Madam,";
+    }
+
+    // TONE OVERRIDE
+    if (tone === "Very Formal") greeting = "Respected Sir/Madam,";
+    if (tone === "Formal") greeting = "Dear Sir/Madam,";
     if (tone === "Polite") greeting = "Dear Sir/Madam,";
     if (tone === "Neutral") greeting = "Hello,";
 
-    let body = `I am writing this ${type.toLowerCase()} regarding ${details}.`;
+    let formatProfile = {
+        opening: "",
+        emphasis: "",
+        closingLine: ""
+    };
 
+    if (format === "Strict Official") {
+        formatProfile.opening = "I respectfully submit this for your kind consideration.";
+        formatProfile.emphasis = "This matter is placed before you in accordance with official procedure.";
+        formatProfile.closingLine = "Kindly accord the necessary approval.";
+    }
+
+    if (format === "Professional Corporate") {
+        formatProfile.opening = "I hope this message finds you well.";
+        formatProfile.emphasis = "This request is made in line with professional expectations.";
+        formatProfile.closingLine = "I appreciate your time and consideration.";
+    }
+
+    if (format === "Student Academic") {
+        formatProfile.opening = "I am writing this as a student seeking your guidance and approval.";
+        formatProfile.emphasis = "This request is directly related to my academic responsibilities.";
+        formatProfile.closingLine = "I shall be grateful for your support.";
+    }
+
+    if (format === "Request-Focused") {
+        formatProfile.opening = "I am writing to formally request your assistance in this matter.";
+        formatProfile.emphasis = "This request is important and requires your kind consideration.";
+        formatProfile.closingLine = "I sincerely request you to consider this favorably.";
+    }
+
+    if (format === "Explanation-Focused") {
+        formatProfile.opening = "I am writing to explain my situation in detail for clarity.";
+        formatProfile.emphasis = "The background of this matter is essential to understand the request.";
+        formatProfile.closingLine = "Thank you for taking the time to understand my situation.";
+    }
+    let body = "";
+    // ---------- SHORT (2 FULL PARAGRAPHS) ----------
+    if (length === "Short") {
+        body = `${formatProfile.opening}
+
+    I am writing this ${type.toLowerCase()} regarding ${details}. ${reasonText}
+
+    ${formatProfile.emphasis}`;
+    }
+
+    // ---------- STANDARD (3 FULL PARAGRAPHS) ----------
+    if (length === "Standard") {
+        body = `${formatProfile.opening}
+
+    I am writing this ${type.toLowerCase()} regarding ${details}. ${reasonText}
+
+    ${formatProfile.emphasis} I request you to kindly review this matter at your convenience and take the necessary action as deemed appropriate.`;
+    }
+
+    // ---------- DETAILED (4 FULL PARAGRAPHS) ----------
     if (length === "Detailed") {
-        body += " I kindly request you to consider this matter carefully and provide the necessary approval at your convenience.";
+        body = `${formatProfile.opening}
+
+    I am writing this ${type.toLowerCase()} regarding ${details}. ${reasonText}
+
+    ${formatProfile.emphasis} This request is made after careful consideration, and I believe it is reasonable under the given circumstances.
+
+    I assure you that I will fulfill all responsibilities and comply with any conditions associated with this request. I sincerely hope for your understanding and support.`;
     }
 
+    // ---------- SIMPLE ENGLISH OVERRIDE ----------
     if (language === "Simple English") {
-        body = `I am writing this letter about ${details}. Please consider my request.`;
+        body = `I am writing this letter about ${details}.
+
+    ${reasonText}
+
+    I kindly request you to consider my situation and help me with this request.`;
     }
 
-    let closing = "Thanking you.\n\nYours sincerely,";
+    let closing = "";
+
+    // FORMAT-BASED CLOSINGS
+    if (format === "Strict Official") {
+        closing = "Thanking you.\n\nYours faithfully,";
+    }
+
+    if (format === "Professional Corporate") {
+        closing = "Thank you for your time and consideration.\n\nKind regards,";
+    }
+
+    if (format === "Student Academic") {
+        closing = "Thanking you.\n\nYours sincerely,";
+    }
+
+    if (format === "Request-Focused") {
+        closing = "I shall be grateful for your kind consideration.\n\nYours sincerely,";
+    }
+
+    if (format === "Explanation-Focused") {
+        closing = "Thank you for your patience and understanding.\n\nYours sincerely,";
+    }
 
     const output =
-`${greeting}
+    `${greeting}
 
-${body}
+    ${body}
 
-${closing}
-[Your Name]`;
+    ${closing}
+    [Your Name]`;
 
-    document.getElementById("letterOutput").value = output;
-});
+        document.getElementById("letterOutput").value = output;
+    });
 
 // Letter output actions
 document.querySelector("#letter-tool .output-actions").addEventListener("click", (e) => {
