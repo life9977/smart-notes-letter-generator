@@ -1,0 +1,158 @@
+/* ===== RESET & BASE ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+    background-color: #f9fafb;
+    color: #1f2933;
+    line-height: 1.6;
+    padding: 16px;
+}
+
+/* ===== HEADER ===== */
+header {
+    text-align: center;
+    padding: 24px 12px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+header h1 {
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+}
+
+header p {
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+/* ===== MAIN LAYOUT ===== */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ===== TRUST SECTION ===== */
+#trust {
+    background: #e0f2fe;
+    color: #075985;
+    text-align: center;
+    padding: 10px;
+    margin: 16px 0;
+    border-radius: 6px;
+    font-size: 0.85rem;
+}
+
+/* ===== SECTIONS ===== */
+section {
+    background: #ffffff;
+    padding: 16px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+}
+
+section h2 {
+    font-size: 1.25rem;
+    margin-bottom: 6px;
+}
+
+section p {
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+    color: #374151;
+}
+
+/* ===== INPUTS ===== */
+label {
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 4px;
+    color: #374151;
+}
+
+textarea {
+    width: 100%;
+    min-height: 120px;
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    resize: vertical;
+    margin-bottom: 12px;
+}
+
+textarea:focus,
+select:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+/* ===== CONTROLS ===== */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+select {
+    width: 100%;
+    padding: 8px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid #d1d5db;
+}
+
+/* ===== BUTTONS ===== */
+button {
+    background-color: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-top: 6px;
+}
+
+button:hover {
+    background-color: #1e40af;
+}
+
+.output-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+/* ===== ADS ===== */
+.ad-box {
+    margin-top: 16px;
+    padding: 12px;
+    text-align: center;
+    font-size: 0.85rem;
+    color: #6b7280;
+    border: 1px dashed #d1d5db;
+    background: #f3f4f6;
+}
+
+/* ===== FOOTER ===== */
+footer {
+    text-align: center;
+    font-size: 0.8rem;
+    color: #6b7280;
+    padding: 16px 0;
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 768px) {
+    .controls {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
