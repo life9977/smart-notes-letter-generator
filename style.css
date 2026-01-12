@@ -7,9 +7,9 @@
 
 body {
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-    background-color: #f9fafb;
-    color: #1f2933;
-    line-height: 1.6;
+    background-color: #f1f5f9;
+    color: #1f2937;
+    line-height: 1.7;
     padding: 16px;
 }
 
@@ -17,7 +17,8 @@ body {
 header {
     text-align: center;
     padding: 24px 12px;
-    border-bottom: 1px solid #e5e7eb;
+    background-color: #ffffff;
+    border-bottom: 2px solid #e2e8f0;
 }
 
 header h1 {
@@ -50,10 +51,10 @@ main {
 /* ===== SECTIONS ===== */
 section {
     background: #ffffff;
-    padding: 16px;
-    margin-bottom: 20px;
-    border-radius: 8px;
-    border: 1px solid #e5e7eb;
+    padding: 20px;
+    margin-bottom: 24px;
+    border-radius: 10px;
+    border: 1px solid #e2e8f0;
 }
 
 section h2 {
@@ -110,18 +111,19 @@ select {
 
 /* ===== BUTTONS ===== */
 button {
-    background-color: #2563eb;
+    background-color: #1d4ed8;
     color: #ffffff;
     border: none;
-    padding: 10px 14px;
-    border-radius: 6px;
+    padding: 10px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 500;
     margin-top: 6px;
 }
 
 button:hover {
-    background-color: #1e40af;
+    background-color: #1e3a8a;
 }
 
 .output-actions {
@@ -146,8 +148,10 @@ button:hover {
 footer {
     text-align: center;
     font-size: 0.8rem;
-    color: #6b7280;
-    padding: 16px 0;
+    color: #475569;
+    padding: 20px 0;
+    background-color: #ffffff;
+    border-top: 1px solid #e2e8f0;
 }
 
 /* ===== DESKTOP ===== */
@@ -155,4 +159,13 @@ footer {
     .controls {
         grid-template-columns: repeat(3, 1fr);
     }
+}
+
+footer a {
+    color: #1d4ed8;
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
 }
